@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cross-Domain XHR</title>
+</head>
+<body>
+<h1>Health Tip of the Day</h1>
+	<div id="tipOfTheDay">
+		<p id="tipText"> </p>
+	</div>
+    <progress id="xhrProgress">
+	<script>
+	var xhr;
+	var tipText;
+	var xmlTips;
+	var tip;
+	
+	xhr = new XMLHttpRequest()
+	if(typeof xhr.withCredentials === undefined) {
+		document.getElementById('tipText').innerHTML = "Your Browser does not support Cross-Origin XMLHttpRequest";
+	}
+	else {
+		document.getElementById('tipText').innerHTML = "Your Browser does  support Cross-Origin XMLHttpRequest";
+	}
+	
+	xhr.onprogress =function(evt) {
+		alert("Loaded " + evt.loaded + " of " + evt.total);
+		var progressXHR = document.getElementById ('xhrProgress');
+        progressXHR.min = 0;
+        progressXHR.max = 100;                    
+        setInterval (function ()
+          {
+             progressXHR.value = (evt.loaded / evt.total) * 100; 
+          }, 100);
+	}
+	
+	var xhrlocation = "http://www.kevinruse.com/KRA-HTML_FoodPlate/messages.xml";
+	xhr.open('GET', xhrlocation, true);	
+	xhr.send(null);
+				
+
+	</script>
+</body>
+</html>

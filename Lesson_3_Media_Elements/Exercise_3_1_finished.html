@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lesson 2: Media Elements</title>
+<script type="text/javascript">
+//step 1
+function checkVideoSupport()
+{
+//var hasVideo = (document.createElement('video').canPlayType);
+//step two
+var hasVideo = !!(document.createElement('video').canPlayType);
+alert(hasVideo);	
+}
+</script>
+</head>
+
+<body>
+<h1>New Media Elements: Video</h1>
+<h2>Elements:</h2>
+<pre>&lt;video&gt;</pre>
+<pre>&lt;audio&gt;</pre>
+  <input type="button" name="videoSupport" id="videoSupport" value="Video Support?" onClick="checkVideoSupport()">
+
+<h2>Video Attributes:</h2>
+<table width="600" border="1" cellspacing="2" cellpadding="2">
+  <tr>
+    <th width="84" scope="col">Attribute</th>
+    <th width="93" scope="col">Value</th>
+    <th width="395" scope="col">What id does</th>
+  </tr>
+  <tr>
+    <td>audio</td>
+    <td>muted</td>
+    <td>Sets the default &quot;state&quot;. Only muted is supported</td>
+  </tr>
+  <tr>
+    <td>autoplay</td>
+    <td>autoplay</td>
+    <td>Plays the video automatically</td>
+  </tr>
+  <tr>
+    <td>controls</td>
+    <td>controls</td>
+    <td>Displays controls: play, pause</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>[pixel value]</td>
+    <td>Sets the height of the video player</td>
+  </tr>
+  <tr>
+    <td>loop</td>
+    <td>loop</td>
+    <td>Plays the video over again after its finished playing</td>
+  </tr>
+  <tr>
+    <td>poster</td>
+    <td>[url]</td>
+    <td>Displays an image in place of the video, until the video is played</td>
+  </tr>
+  <tr>
+    <td>preload</td>
+    <td>preload</td>
+    <td>Loads the video at page load, ignored if &quot;autoplay&quot; is present</td>
+  </tr>
+  <tr>
+    <td>src</td>
+    <td>[url]</td>
+    <td>Sets url of the video to play</td>
+  </tr>
+  <tr>
+    <td>width</td>
+    <td>[pixel value]</td>
+    <td>Sets the width of the video player</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>Browser Support:</h2>
+<table width="600" border="1" cellspacing="2" cellpadding="2">
+  <tr>
+    <th scope="col">Format</th>
+    <th scope="col">IE</th>
+    <th scope="col">Firefox</th>
+    <th scope="col">Opera</th>
+    <th scope="col">Chrome</th>
+    <th scope="col">Safari</th>
+  </tr>
+  <tr>
+    <td>Ogg</td>
+    <td>No</td>
+    <td>3.5+</td>
+    <td>10.5+</td>
+    <td>5.0+</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>MPEG 4</td>
+    <td>9.0+</td>
+    <td>No</td>
+    <td>No</td>
+    <td>5.0+</td>
+    <td>3.0+</td>
+  </tr>
+  <tr>
+    <td>WebM</td>
+    <td>No</td>
+    <td>4.0+</td>
+    <td>10.6+</td>
+    <td>6.0+</td>
+    <td>No</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>Checking for Browser Support</h2>
+<p>To check for browser support of  <code>&lt;video&gt;</code> and  <code>&lt;audio&gt;</code> elements you can use jQuery to:</p>
+<p> Dynamically create the <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> elements.</p>
+<p>Check for the existence of a method on the element</p>
+<p>If the method doesn't exist the browser does not support the element.</p>
+<p> var hasVideo = (document.createElement('video').canPlayType);</p>
+
+
+
+</body>
+</html>

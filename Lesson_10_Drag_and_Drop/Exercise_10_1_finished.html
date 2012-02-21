@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Check for Drag and Drop Support</title>
+<script>
+function dragDropSupportCheck() {
+	var dragDropSupport;
+	if(navigator.appName == 'Microsoft Internet Explorer'){
+		var ua = navigator.userAgent;
+		var re = new RegExp("MSIE([0-9]{1,}[\.0-9]{0,})");
+		if(re.exec(ua) != null){
+			var rv = parseFloat( RegExp.$1);
+			if (rv >= 6.0) {
+				dragDropSupport = true;
+			}
+	}
+	else if ('draggable' in document.createElement('span')){
+		dragDropSupport = true;	
+	}
+	dragDropSupport = false
+  }
+  if(dragDropSupport){
+	alert("you can drag and drop")  
+  }
+  else {
+	 alert("you can drag and drop")  
+  }
+}
+</script>
+</head>
+
+<body onLoad="dragDropSupportCheck()">
+</body>
+</html>

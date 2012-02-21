@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Check for Drag and Drop Support</title>
+<script src="../scripts/jquery_1_6_1.js"></script>
+<script>
+function init(){
+	//variables needed to calculate if the user is within a 24-hour time frame
+	var laterdate = new Date();     // today
+	var earlierdate = localStorage.getItem("today");
+	earlierdate = new Date(earlierdate);
+	var daysDifference;
+	var hoursDifference;
+	var fruitEaton;
+	var fruitLeft;	
+	var vegEaton;
+	var vegLeft;
+	var proteinEaten;
+	var proteinLeft;
+	var grainEaton;
+	var grainLeft;
+	var dairyEaten;
+	var dairyLeft;
+	var selectedFood;
+	var metFruit;
+	var metVeg;
+	var metDairy;
+	var metProtein;
+	var metGrain;
+
+	//variables to keep track of food eaten	
+	var req = localStorage.getItem("req");
+	req = JSON.parse(req);
+	fruitNeeded = req.fruit;
+	vegNeeded = req.veg;
+	proteinNeeded = req.protein;
+	grainNeeded = req.grains;
+	dairyNeeded = req.dairy;
+	
+	var measure;
+	var foodItem;
+	var fruitImg = document.getElementById('fruitIcon');
+	var fruitPlate = document.getElementById('fruitempty');
+	var proteinImg = document.getElementById('proteinIcon');
+	var proteinPlate = document.getElementById('proteinempty');
+	var vegImg = document.getElementById('vegIcon');
+	var vegPlate = document.getElementById('vegempty');
+	var grainImg = document.getElementById('grainIcon');
+	var grainPlate = document.getElementById('graindairyempty');
+	
+	fruitImg.addEventListener('dragstart', startDragHandler, false);
+	fruitPlate.addEventListener('dragover', dragOverHandler, false);
+	fruitPlate.addEventListener('drop', dropHandler, false);
+	
+	proteinImg.addEventListener('dragstart', startDragHandler, false);
+	proteinPlate.addEventListener('dragover', dragOverHandler, false);
+	proteinPlate.addEventListener('drop', dropHandler, false);
+	
+	vegImg.addEventListener('dragstart', startDragHandler, false);
+	vegPlate.addEventListener('dragover', dragOverHandler, false);
+	vegPlate.addEventListener('drop', dropHandler, false);
+	
+	grainImg.addEventListener('dragstart', startDragHandler, false);
+	grainPlate.addEventListener('dragover', dragOverHandler, false);
+	grainPlate.addEventListener('drop', dropHandler, false);
+
+}
+
+function startDragHandler(evt) {
+	foodItem = evt.target.id;
+}
+
+function dragDropSupportCheck() {
+	var dragDropSupport;
+	if(navigator.appName == 'Microsoft Internet Explorer'){
+		var ua = navigator.userAgent;
+		var re = new RegExp("MSIE([0-9]{1,}[\.0-9]{0,})");
+		if(re.exec(ua) != null){
+			var rv = parseFloat( RegExp.$1);
+			if (rv >= 6.0) {
+				dragDropSupport = true;
+			}
+	}
+	else if ('draggable' in document.createElement('span')){
+		dragDropSupport = true;	
+	}
+	
+	dragDropSupport = false
+  }
+  if(dragDropSupport){
+	//alert("you can drag and drop")  
+  }
+  else {
+	// alert("you can drag and drop")  
+  }
+}
+
+function dragOverHandler(evt) {
+	if(evt.preventDefault) {
+		evt.preventDefault();
+		return false;
+	}
+}
+
+function dropHandler(evt) {
+		diaryUpdate(foodItem);
+}
+	
+function diaryUpdate(foodAdded)
+{
+	var measure;
+	if(foodAdded == "fruitIcon")
+	{
+	  measure = "cup";
+	  if(localStorage.getItem("fruits") == 0)
+		{
+			measure = "cup";
+			fruitEaton = 1;		
+			fruitLeft = fruitNeeded - fruitEaton;
+			metFruit = false;
+			$('#status').html("<p>You have eaten " + fruitEaton + " " + measure + " of Fruit. You need to eat " + fruitLeft + " more " + measure + "(s).</p>");
+		}
+		else
+		{
+			fruitEaton = localStorage.getItem("fruits");
+			fruitEaton++;
+			measure = "cups";
+			fruitLeft = fruitNeeded - fruitEaton;
+			metFruit = false;
+			$('#status').html("<p>You have eaten " + fruitEaton + " " + measure + " of Fruit. You need to eat " + fruitLeft + " more " + measure + "(s).</p>");			
+		}
+		
+		localStorage.setItem("fruits",fruitEaton);
+		if( fruitEaton < fruitNeeded)
+		{			
+			alert("you have more fruit to eat!");	
+				
+		}
+		else 
+		{
+			$('#status').html('<p>You have eaten all the fruit you need to eat today!</p>');
+			metFruit = true;
+			localStorage.setItem("metFruit",true);
+			loadImgs();
+		}	
+	}
+	
+	if(foodAdded == "vegIcon")
+	{
+	  measure = "ounce";
+	  if(localStorage.getItem("vegs") == 0)
+		{
+			measure = "cup";
+			vegEaton = 1;		
+			vegLeft = vegNeeded - vegEaton;
+			metVeg = false;
+			$('#status').html("<p>You have eaten " + vegEaton + " " + measure + " of vegetable. You need to eat " + vegLeft + " more " + measure + "(s).</p>");
+		}
+		else 
+		{
+			vegEaton = localStorage.getItem("vegs");
+			vegEaton++;
+			measure = "cups";
+			vegLeft = vegNeeded - vegEaton;
+			metVeg = false;
+			$('#status').html("<p>You have eaten " + vegEaton + " " + measure + " of vegetables. You need to eat " + vegLeft + " more " + measure + "(s).</p>");
+		}
+		localStorage.setItem("vegs",vegEaton);
+		if( vegEaton < vegNeeded)
+		{			
+			alert("you have more vegetables to eat!");		
+		}
+		else
+		{
+			$('#status').html('<p>You have eaten all the vegetables you need to eat today!</p>');
+			metVeg= true;
+			localStorage.setItem("metVeg",true);
+			loadImgs();
+		}	
+	}
+	
+	if(foodAdded == "proteinIcon")
+	{
+	  measure = "ounce";
+	  if(localStorage.getItem("protein") == 0)
+		{
+			measure = "ounce";
+			proteinEaton = 1;		
+			proteinLeft = proteinNeeded - proteinEaton;
+			metProtein = false;
+			$('#status').html("<p>You have eaten " + proteinEaton + " " + measure + " of protein. You need to eat " + proteinLeft + " more " + measure + "(s).</p>");
+		}
+		else 
+		{
+			proteinEaton = localStorage.getItem("proteins");
+			proteinEaton++;
+			measure = "ounces";
+			proteinLeft = proteinNeeded - proteinEaton;
+			metProtein = false;
+			$('#status').html("<p>You have eaten " + proteinEaton + " " + measure + " of protein. You need to eat " + proteinLeft + " more " + measure + "(s).</p>");
+		}
+
+		localStorage.setItem("proteins",proteinEaton);
+		if( proteinEaton < proteinNeeded)
+		{			
+			alert("you have more protein to eat!");
+			
+		}
+		else
+		{
+			$('#status').html('<p>You have eaten all the protein you need to eat today!</p>');
+			metProtein = true;
+			loadImgs();
+			localStorage.setItem("metProtein",true);
+		}	
+	}
+		
+	if(foodAdded == "grainIcon")
+	{
+	  measure = "ounce";
+	  if(localStorage.getItem("grains") == 0)
+		{
+			measure = "ounce";
+			grainEaton = 1;		
+			grainLeft = grainNeeded - grainEaton;
+			metGrain = false;
+			$('#status').html("<p>You have eaten " + grainEaton + " " + measure + " of grains. You need to eat " + grainLeft + " more " + measure + "(s).</p>");
+		}
+		else 
+		{
+			grainEaton = localStorage.getItem("grains");
+			grainEaton++;
+			measure = "ounces";
+			grainLeft = grainNeeded - grainEaton;
+			metGrain = false;
+			$('#status').html("<p>You have eaten " + grainEaton + " " + measure + " of grains. You need to eat " + grainLeft + " more " + measure + "(s).</p>");
+		}
+		localStorage.setItem("grains",grainEaton);
+		if( grainEaton < grainNeeded)
+		{			
+			alert("you have more Grains to eat!");
+		}
+		else
+		{
+			$('#status').html('<p>You have eaten all the grain you need to eat today!</p>');
+			metGrain = true;
+			loadImgs();
+			localStorage.setItem("metGrain",true);
+		}	
+	}
+}
+	
+function loadImgs()
+{
+		if(metFruit == true)
+		{
+			$('#fruitempty').attr('src', '../images/myPlate/fruit.jpg?timestamp=" + new Date().getTime()"');
+		}
+		
+		if(metVeg == true)
+		{
+			$('#vegempty').attr('src', '../images/myPlate/vegetable.jpg?timestamp=" + new Date().getTime()"');
+		}
+		
+		if(metProtein == true)
+		{
+			$('#proteinempty').attr('src', '../images/myPlate/protein.jpg?timestamp=" + new Date().getTime()"');
+		}
+		
+		if(metGrain == true)
+		{
+			$('#graindairyempty').attr('src', '../images/myPlate/grain-dairy.jpg?timestamp=" + new Date().getTime()"');
+		}	
+}
+</script>
+<link href="../styles/foodPlate.css" rel="stylesheet" type="text/css">
+</head>
+<body onLoad="dragDropSupportCheck();init()">
+<div id="foodPlateWrapper">
+  <div id="colwrap1"> <img src="../images/myPlate/fruitempty.png" id="fruitempty" alt="" /> <img src="../images/myPlate/vegempty.png" id="vegempty" alt="" /></div>
+  <div id="colwrap2"> <img src="../images/myPlate/graindairyempty.png" id="graindairyempty" alt="" />
+    <div class="clearFloat"></div>
+    <img src="../images/myPlate/proteinempty.png" id="proteinempty" alt="" />
+    <div class="clearFloat"></div>
+  </div>
+  <img src="../images/myPlate/text.png" id="text" alt="" />
+  <div id="foodIcons"> 
+  <img src="../images/foodItems/apple_sm.gif" alt="apple" name="fruitIcon" width="35" height="42" id="fruitIcon" draggable="true">
+   <img src="../images/foodItems/veg_sm.png" alt="veg" width="35" height="41" id="vegIcon" draggable="true"> 
+   <img src="../images/foodItems/protein_sm.png" alt="protein" width="35" height="37" id="proteinIcon" draggable="true"> 
+   <img src="../images/foodItems/grain_sm.png" alt="grain" width="35" height="42" id="grainIcon" draggable="true"> 
+   <img src="../images/foodItems/dairy_sm.png" alt="dairy" width="34" height="41" id="dairyIcon" draggable="false">
+    <p id="status"> </p>
+  </div>
+</div>
+</body>
+</html>

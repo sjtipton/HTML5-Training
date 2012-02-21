@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML5: Server Sent Events</title>
+</head>
+
+<body>
+<h2>Time Console:</h2>
+<button type="button" onclick="closeConnection()">Close Connection</button>
+<button type="button" onclick="reOpen()">Reopen Connection</button>
+<button type="button" onclick="getElementById('output').innerHTML = ''">Clear Log</button>
+<div id="output"></div>
+<script>
+	var evtSource = new EventSource('http://localhost/scripts/time.php');
+	var output = document.getElementById('output');
+	
+	evtSource.addEventListener('message', onMsg, false);	
+	function onMsg(evt){
+		output.innerHTML += evt.data + '<br>';
+	}	
+	function closeConnection(){
+		evtSource.close();
+		output.innerHTML += "The Connection was closed.<br>";
+	}	
+	function reOpen(){
+		evtSource =  new EventSource('http://localhost/scripts/time.php');
+		output.innerHTML += "The Connection was reopened.<br>";
+		evtSource.addEventListener('message', onMsg, false);
+	}
+</script>
+</body>
+</html>

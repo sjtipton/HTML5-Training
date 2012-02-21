@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Using Modernizr</title>
+<script src="scripts/modernizr-2.0.6.js"></script>
+<script>
+function checkSupport() {
+		if (Modernizr.canvas) {
+			alert("Your browser supports canvas!");
+		}
+		else {
+			alert("Your browser doesn't appear to support canvas.");
+		}
+		if (Modernizr.sessionStorage) {
+			alert("Your browser supports sessionStorage!");
+		}
+		else {
+			alert("Your browser doesn't appear to support sessionstorage.");
+		}
+		if (Modernizr.geolocation) {
+			alert("Your browser supports geolocation!");
+		}
+		else {
+			alert("Your browser doesn't appear to support geolocation.");
+		}
+}
+</script>
+</head>
+
+<body onLoad="checkSupport()">
+</body>
+</html>

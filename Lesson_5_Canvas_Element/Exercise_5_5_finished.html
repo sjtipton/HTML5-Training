@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>The HTML5 Canvas: Arc</title>
+	<script>
+	function drawArc() 
+	{
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		
+		//arc(x, y, radius, startAngle, endAngle, anticlockwise)
+		
+		context.arc(75,75,35,0,Math.PI,false); 
+		context.stroke();
+	}
+	</script>
+	<style>
+		canvas { border: 1px solid black; }
+	</style>
+</head>
+<body onload="drawArc()">
+	<canvas id="myCanvas"></canvas>
+</body>
+</html>

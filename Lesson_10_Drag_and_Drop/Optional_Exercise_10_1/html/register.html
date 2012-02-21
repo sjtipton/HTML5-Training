@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Register Your Food Plate Diary</title>
+<script src="../scripts/jquery_1_6_1.js"></script>
+<script src="../scripts/register.js"></script>
+
+<link href="../styles/foodPlate.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="registerForm">
+  <form action="" method="post" name="register_frm" id="register_frm">
+    <label for="firstName">First Name:</label>
+    <input type="text" name="firstName" id="firstName" autofocus required>
+    <br>
+    <br>
+    <input type="radio" name="sex" id="sex" value="F">
+    <label for="sex">Female</label>
+    <br>
+    <input type="radio" name="sex" id="sex" value="M">
+    <label for="sex">Male</label>
+    <br>
+    <br>
+    <input type="radio" name="ageGroup" id="ageGroupC" value="C">
+    <label for="ageGroup">Child</label>
+    <br>
+    <input type="radio" name="ageGroup" id="ageGroupA" value="A">
+    <label for="ageGroup">Adult</label>
+    <br>
+    <br>
+    <div id="adultAgeGroups" style="display:none; top:8;">
+      <select name="adultAgeGroup" id="adultAgeGroup" size="1">
+        <option value="" selected>Select your Age Group</option>
+        <option value="19-30">19-30</option>
+        <option value="31-50">31-50</option>
+        <option value="51+">51+</option>
+      </select>
+    </div>
+    <div id="childAgeGroups" style="display:none; top:8">
+      <select name="childAgeGroup" id="childAgeGroup" size="1">
+        <option value="" selected>Select your Age Group</option>
+        <option value="2-30">2-3</option>
+        <option value="4-8">4-8</option>
+        <option value="9-13">9-13</option>
+        <option value="14-18">14-18</option>
+      </select>
+    </div>
+    <p><br />
+      <input type="submit" name="submit" id="submit" value="Submit">
+    </p>
+    <p>
+      <input type="button" name="returnToPlate_btn" id="returnToPlate_btn" value="Return to My Plate" style="visibility:hidden">
+    </p>
+  </form>
+</div>
+</body>
+</html>

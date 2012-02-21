@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Web Worker API</title>
+<script src="scripts/jquery_1_6_1.js"></script>
+
+</head>
+
+<body>
+<form>
+  <table border="0" width="200" align="center" style="border:1px solid #000">
+    <thead>
+      <tr>
+        <th colspan="2">Body Mass Index</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2" align="center"><label for="d1">
+            <input type="radio" id="unitsMetric" name="units" value="metric">
+            cm/kg</label>
+          <label for="d2">
+            <input type="radio" id="unitsEn" name="units" value="en">
+            in/lb</label></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="h">Height:</label></td>
+        <td align="left"><input type="text" id="h" name="h" size="6"></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="w">Weight:</label></td>
+        <td align="left"><input type="text" id="w" name="w" size="6"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="button" id="calcBMI_btn" name="calcBMI_btn" value="Calculate"></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="bmi">BMI:</label></td>
+        <td align="left"><input type="text" id="bmi" name="bmi" size="6" readonly></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<h1>BMI</h1>
+<p>BMI is a measure of weight proportionate to height. Generally, BMI is considered an effective way to evaluate whether a person is overweight or obese, though there are exceptions to the rule. Some muscular people may have a BMI that puts them in the overweight range. However, these people are not considered overweight because muscle tissue weighs more than fat tissue.<sup>1<sup></p> 
+<p><sup>1</sup><small>http://stanfordhospital.org/clinicsmedServices/COE/surgicalServices/generalSurgery/bariatricsurgery/resources/bmi_calculator.html</small></p>
+</body>
+</html>

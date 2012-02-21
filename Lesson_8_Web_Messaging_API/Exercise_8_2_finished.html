@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>postMessage API</title>
+</head>
+
+<body>
+<section id="wrapper">
+<header>
+  <h1>postMessage API for (Cross Document Messaging)</h1>
+</header>
+<style>
+iframe {
+  width: 100%;
+  border: 2px solid #ccc;
+}
+</style>
+<form>
+  <p>Enter a number between 1 and 10:
+    <input name="message" type="text" id="message" size="3" maxlength="2" />
+    <input type="submit" value="Get Food Tip"/>
+  </p>
+  <h2>Target iframe (www.kevinruse.com):</h2>
+  <iframe id="iframe" src="http://www.kevinruse.com/KRA-HTML_FoodPlate/tips.html"></iframe>
+</form>
+<script>
+var win = document.getElementById("iframe").contentWindow;
+addEventListener("submit", function(evt) {
+	win.postMessage(
+		document.getElementById("message").value, "http://www.kevinruse.com"
+	);
+
+	if (evt.preventDefault)
+		evt.preventDefault();
+	// otherwise set the returnValue property of the original event to false (IE)
+	evt.returnValue = false;
+});
+
+</script> 
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The HTML5 Web Storage API</title>
+<script type="text/javascript">
+function checkStorageSupport()
+{
+	if(window.localStorage)
+	{
+		alert("This browser supports local storage.");	
+	}
+	else
+	{
+		alert("This browser does NOT support local storage");	
+	}
+}
+
+function saveLocal(){
+    if (window.localStorage) 
+	{
+		var fName = document.getElementById("fName").value;
+		var title = document.getElementById("title").value;
+        var person = {"firstname":fName,"title":title};
+        localStorage.setItem("person",JSON.stringify(person));
+       
+    } else {
+        alert("Your Browser does not support Local Storage.");
+    }
+}
+ 
+function readLocal(){
+    if (window.localStorage) 
+	{
+        //Get the person object
+        var person = localStorage.getItem("person");
+        person = JSON.parse(person);
+        alert(person.firstname + " is a " + person.title + ".");
+    }
+}
+</script>
+
+</head>
+<body onLoad="checkStorageSupport()">
+<p>First Name: 
+  <input type="text" name="fName" id="fName">
+</p>
+<p>Title: 
+  <input type="text" name="title" id="title">
+</p>
+<div id="main">
+    <input id="saveBtn" type="button" value="Save Values" onclick="saveLocal()"/>
+    <input id="readBtn" type="button" value="Read Values" onclick="readLocal()"/>
+</div>	
+</body>
+</html>

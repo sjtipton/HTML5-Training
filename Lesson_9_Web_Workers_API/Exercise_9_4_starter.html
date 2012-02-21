@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Web Worker API</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<style>
+
+#terminate {
+				text-align:center;
+}
+</style>
+</head>
+
+<body>
+<form>
+  <table border="0" width="200" align="center" style="border:1px solid #000">
+    <thead>
+      <tr>
+        <th colspan="2">Body Mass Index</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2" align="center"><label for="d1">
+            <input type="radio" id="unitsMetric" name="units" value="metric">
+            cm/kg</label>
+          <label for="d2">
+            <input type="radio" id="unitsEn" name="units" value="en">
+            in/lb</label></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="h">Height:</label></td>
+        <td align="left"><input type="text" id="h" name="h" size="6"></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="w">Weight:</label></td>
+        <td align="left"><input type="text" id="w" name="w" size="6"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="button" id="calcBMI_btn" name="calcBMI_btn" value="Calculate"></td>
+      </tr>
+      <tr>
+        <td align="right"><label for="bmi">BMI:</label></td>
+        <td align="left"><input type="text" id="bmi" name="bmi" size="6" readonly></td>
+      </tr>
+    </tbody>
+  </table>
+  <div><input type="button" name="terminate" id="terminate" value="Terminate Worker"></div>
+  <p>&nbsp;</p>
+</form>
+<script type="text/javascript">
+var calcBMI_btn;
+var units;
+var height;
+var weight;
+var worker;
+
+$(document).ready(function()
+{
+	if(typeof(Worker) !== "undefined"){	
+		worker = new Worker("bmi_finished.js");
+		worker.addEventListener("message", messageHandler, true);
+		//alert("Your browser supports Web Workers");
+	}
+	else{
+		alert("Your browser DOES NOT support Web Workers");
+	}
+})
+	
+	$('#calcBMI_btn').click(function() {
+		
+		units = $('[name="units"]:radio:checked').val();
+		height = $('#h').val();
+		weight = $('#w').val();
+		worker.postMessage( {"units" : units,
+							 "height" : height,
+							 "weight" : weight});
+	});
+	
+function messageHandler(evt) {
+		$('#bmi').val(evt.data)
+		//alert(evt.data);
+	}	
+</script>
+<h1>BMI</h1>
+<p>BMI is a measure of weight proportionate to height. Generally, BMI is considered an effective way to evaluate whether a person is overweight or obese, though there are exceptions to the rule. Some muscular people may have a BMI that puts them in the overweight range. However, these people are not considered overweight because muscle tissue weighs more than fat tissue.<sup>1<sup></p> 
+<p><sup>1</sup><small>http://stanfordhospital.org/clinicsmedServices/COE/surgicalServices/generalSurgery/bariatricsurgery/resources/bmi_calculator.html</small></p>
+</body>
+</html>

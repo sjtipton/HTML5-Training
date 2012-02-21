@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+<meta  charset="utf-8" />
+<title>HTML 5 Video</title>
+<script>
+function getProperty()
+{
+	var vid = document.getElementById("myVid");
+	window.alert("video property is " + vid.duration);
+}
+
+</script>
+</head>
+
+<body>
+<h1>Playing Video </h1>
+<p>
+  <video id="myVid" src="media/foodPlate_demo.ogg" controls>
+    Your browser does NOT support HTML5 Video
+  </video>
+</p>
+
+
+<p>
+  <input type="button" name="getDuration" id="getDuration" value="Get Duration" onClick="getProperty()">
+</p>
+</body>
+</html>

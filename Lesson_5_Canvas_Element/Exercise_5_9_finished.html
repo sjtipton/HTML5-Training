@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset="utf-8" />
+        <style>    
+            #myCanvas
+			 {
+                border: 1px solid #9C9898;
+            }
+        </style>
+        <script>
+            
+            window.onload = function(){
+                var canvas = document.getElementById("myCanvas");
+                var context = canvas.getContext("2d");
+                
+                var imageObj = new Image();
+                imageObj.onload = function()
+				{
+                    var pattern = context.createPattern(imageObj, "repeat-y");                  
+                    context.rect(10, 10, canvas.width - 20, canvas.height - 20);                    
+                    context.fillStyle = pattern;
+                    context.fill();                   
+                };
+                imageObj.src = "images/samplePNG.png";
+            };
+        </script>
+        <title>HTML5 Canvas</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="1024" height="200">
+        </canvas>
+    </body>
+</html>

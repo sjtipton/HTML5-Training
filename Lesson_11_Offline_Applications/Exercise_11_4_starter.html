@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en" manifest="offline.manifest">
+<head>
+<meta charset="utf-8">
+<title>Offline Applications</title>
+<script>
+if(window.applicationCache){
+	alert("This browser supports Application Cache")	
+}
+else {
+	alert("This browser does NOT support Application Cache");
+}
+	
+
+</script>
+</head>
+
+<body>
+<p>
+  <input type="button" name="getStatus" id="getStatus" value="Get Online Status">
+  
+</p>
+<p><img src="images/foodDiaryPlate.png" width="300" height="251" alt="Food Plate"></p>
+</body>
+</html>

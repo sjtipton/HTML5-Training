@@ -1,0 +1,46 @@
+<!doctype html>  
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket API</title>
+  <script src="js/lib/modernizr-1.6.min.js"></script>
+</head>
+<body>
+        <h1>DEMO from http://websocket.org/demos.html</h1>
+        <h1>Echo Test</h1>
+        <div id="webSocketSupp">
+          <div class="clearfix"></div>
+        </div>
+        <div id="noWebSocketSupp">
+          <div style="float: left;"></div>
+          <div class="clearfix"></div>
+        </div>
+        <div id="echo">
+          <div id="echo-config" style="float: left;">
+            <strong>Location:</strong><br>
+            <input id="wsUri" value="ws://echo.websocket.org" size="35">
+            <br>
+            <input type="checkbox" id="secureCb" onClick="toggleTls();">
+            <span id="secureCbLabel" style="font-size: smaller; color: black;">Use secure WebSocket (TLS)</span><br>
+            <button id="connect">Connect</button>
+            <button id="disconnect">Disconnect</button>
+            <br>
+            <br>
+            <strong>Message:</strong><br>
+            <input id="sendMessage" size="35" value="Rock it with HTML5 WebSocket">
+            <br>
+            <button id="send" class="wsButton">Send</button>
+          </div>
+          <div id="echo-log" style="float: left; margin-left: 20px; padding-left: 20px; width: 350px; border-left: solid 1px #cccccc;"> <strong>Log:</strong>
+            <div id="consoleLog"></div>
+            <button id="clearLogBut" style="position: relative; top: 3px;">Clear log</button>
+          </div>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="js/lib/jquery-1.4.2.min.js"%3E%3C/script%3E'))</script>
+    
+</div> 
+  <script type="text/javascript" src="js/echo.js"></script>
+</body>
+</html>

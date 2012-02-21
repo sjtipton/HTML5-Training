@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add Food to Your Plate</title>
+
+<link href="../styles/foodPlate.css" rel="stylesheet">
+<script src="../scripts/jquery_1_6_1.js"></script>
+<script src="../scripts/jquery-ui-1.8.14.custom.min.js"></script>
+<script src="../scripts/addFood.js"></script>
+</head>
+<body>
+<header id="welcome">
+<h1 id="welcomeHeader"></h1>
+</header>
+<div id="addFood">
+<h2>
+  <label for="foodGroups"></label> 
+  Add a Food Item
+</h2>
+</div>
+<div id="foodPlateWrapper">
+  <div id="colwrap1"> <img src="../images/myPlate/fruitempty.png" id="fruitempty" alt="" /> <img src="../images/myPlate/vegempty.png" id="vegempty" alt="" /> </div>
+  <div id="colwrap2"> <img src="../images/myPlate/graindairyempty.png" id="graindairyempty" alt="" />
+    <div class="clearFloat"></div>
+    <img src="../images/myPlate/proteinempty.png" id="proteinempty" alt="" />
+    <div class="clearFloat"></div>
+  </div>
+  <img src="../images/myPlate/text.png" id="text" alt="" />
+  <div id="foodIcons"> <img src="../images/foodItems/apple_sm.gif" alt="apple" name="fruitIcon" width="35" height="42" id="fruitIcon"> <img src="../images/foodItems/veg_sm.png" alt="veg" width="35" height="41" id="vegIcon"> <img src="../images/foodItems/protein_sm.png" alt="protein" width="35" height="37" id="proteinIcon"> <img src="../images/foodItems/grain_sm.png" alt="grain" width="35" height="42" id="grainIcon">
+    <img src="../images/foodItems/dairy_sm.png" alt="dairy" width="34" height="41" id="dairyIcon">
+    <div id="status"> </div>
+  </div>
+</div>
+<div id="statusArea">
+<input type="button" id="myStats" name="myStats" value="Show My Status" />
+</div>
+<div id="stats"></div>
+</body>
+</html>

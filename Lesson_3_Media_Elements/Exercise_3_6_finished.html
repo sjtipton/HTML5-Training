@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Lesson 2: Media</title>
+<script type="text/javascript" src="scripts/jquery_1_6_1.js"></script>
+<script type="text/javascript">
+var seekbar;
+var video;
+
+function init() {
+	seekbar = document.getElementById('seekbar');
+	video = document.getElementById('demo');
+	video.addEventListener('timeupdate', updateSeekbar, false)	;
+	video.addEventListener('durationchange', initSeekbar, false);
+	seekbar.addEventListener('change', changeVidTime, false);
+	initSeekbar();
+}
+
+function initSeekbar() {
+	seekbar.min = 0;
+	seekbar.max = video.duration;
+}
+
+function updateSeekbar() {
+	seekbar.value = video.currentTime;	
+}
+
+function changeVidTime() {
+	video.currentTime = seekbar.value;	
+}
+
+
+$(document).ready(function()
+{
+  $('#play_btn').click(function(){
+	  //step one - doesn't work because play is not a jquery method, but a method of the DOM object
+	  //therefore you  need to get out jquery and into the HTML5 video DOM using get(0)
+    //$('#demo').play();
+	//get the native DOM element using the jQuery selector
+	$('#demo').get(0).play();
+
+  });
+  $('#pause_btn').click(function(){
+	$('#demo').get(0).pause();
+  });
+
+});
+
+function changeVol(v) {
+			var demo = document.getElementById('demo');			
+			demo.volume = v;
+			if (demo.volume==0) {
+				demo.muted = true;
+			} else {
+				demo.muted = false;
+			}
+		}
+</script>
+
+</head>
+
+<body onLoad="init()">
+<h1>Controlling Video </h1>
+<p>
+  <video id="demo" src="media/FoodPlate.ogv">
+    Your browser does NOT support HTML5 Video
+  </video>
+</p>
+<p>
+  <input name="play_btn" id="play_btn" type="button" value="Play" />
+  <input name="pause_btn" id="pause_btn" type="button" value="Pause" />
+</p>
+<p>Volume:
+  <input type="range" id="volumeControl" name="volumeControl" 
+  		 min="0" max="1" step="0.1" value="1" onchange="changeVol(this.value)"/>
+</p>
+<p>Seekbar:
+  <input type="range" id="seekbar" name="seekbar" 
+  		 step="any" value="1" />
+</p>
+</body>
+</html>

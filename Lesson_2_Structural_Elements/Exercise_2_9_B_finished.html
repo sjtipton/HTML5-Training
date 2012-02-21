@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create an Element then check for the existence of a property or method</title>
+<script>
+function checkCanvas() {
+	var canvasSupport = !!document.createElement('canvas').getContext;
+	//alert(canvasSupport);
+	if (canvasSupport) {	
+		alert("your browser supports canvas");
+	}
+	else {
+			alert("your browser does NOT support canvas");
+		 }
+}
+</script>
+</head>
+
+<body onLoad="checkCanvas()">
+</body>
+</html>

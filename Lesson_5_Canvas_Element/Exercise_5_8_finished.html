@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>HTML5 Canvas Element - Exercise 1</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="600" height="100" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+
+<script type="text/javascript">
+var canvas=document.getElementById("myCanvas");
+var context=canvas.getContext("2d");
+var grad=context.createLinearGradient(0,0,175,50);
+grad.addColorStop(0,"#FF0000");
+grad.addColorStop(1,"#00FF00");
+context.fillStyle=grad;
+context.fillRect(0,0,175,50);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Responding to the Drop Event</title>
+<style>
+	#apple {
+			cursor:pointer;	
+	}
+</style>
+<script>
+function init(){
+	var fruitPlate = document.getElementById('foodPlate');
+	fruitPlate.addEventListener('dragover', dragOverHandler, false);
+	fruitPlate.addEventListener('drop', dropHandler, false);
+}
+
+function dragOverHandler(evt) {
+	if(evt.preventDefault) {
+		evt.preventDefault();
+		return false;
+	}
+}
+
+function dropHandler(evt) {
+	
+	alert("You dropped me on the plate during a " + evt.type + " event.");
+}
+</script>
+</head>
+
+<body onLoad="init()">
+<p>
+	<img src="Optional_Exercise_10_1/images/foodDiaryPlate.png" 
+		width="300" height="251" 
+        id="foodPlate"
+        alt="Food Plate">
+</p>
+<p>
+	<img src="Optional_Exercise_10_1/images/foodItems/apple_sm.gif" 
+    width="35" height="42" 
+    alt="apple" 
+    id="apple" 
+    draggable="true">
+</p>
+</body>
+</html>

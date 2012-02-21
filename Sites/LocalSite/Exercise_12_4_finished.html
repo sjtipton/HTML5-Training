@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cross-Domain XHR</title>
+</head>
+<body>
+	<div id="tipOfTheDay">
+		<p id="tipText"> </p>
+	</div>
+	<script>
+	var xhr;
+	var tipText;
+	var xmlTips;
+	var tip;
+	
+	function loadTip() {
+		try {
+				xhr = new XMLHttpRequest(),
+				xhr.open('GET', 'http://www.kevinruse.com/KRA-HTML_FoodPlate/messages.xml', false);
+				xhr.send(null);
+				tipText = document.getElementById('tipText');			
+				xmlTips = xhr.responseXML;
+				output();						
+			}
+		catch(err){
+			alert('Try failed. Error occurred: ' + err);
+		}
+		
+		function output() {
+			var randomNumber=Math.floor(Math.random()*11);
+			tip = xmlTips.getElementsByTagName("message")[randomNumber].childNodes[0].nodeValue;
+			tipText.innerHTML = tip;
+		}
+	}
+	
+	window.addEventListener('load', loadTip, true);	
+	</script>
+</body>
+</html>

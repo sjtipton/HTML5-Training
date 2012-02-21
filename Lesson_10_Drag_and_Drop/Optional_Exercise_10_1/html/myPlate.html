@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Food Plate</title>
+<script src="../scripts/jquery_1_6_1.js"></script>
+<script>
+$(document).ready(function()
+{
+  $('#welcomeHeader').text(window.localStorage.fName + "'s Food Plate");
+});
+</script>
+<link href="../styles/foodPlate.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<header>
+<h1 id="welcomeHeader"></h1>
+<img src="../images/foodDiaryPlate.png" width="300" height="251" alt="My Food Plate">
+</header>
+</body>
+</html>

@@ -1,0 +1,94 @@
+@charset "utf-8";
+#mainContent, #registerForm, #addFood, #welcomeHeader, #header, #myReqs, #statusArea
+{
+	text-align: center;
+}
+
+#stats
+{
+	
+}
+
+#foodIcons {
+	padding-top:24px;
+	clear:both;
+	text-align:center;
+}
+#foodIcons img {
+}
+#main {
+	clear:both;
+}
+#colwrap1 {
+	float: left;
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 112px;
+}
+#fruitempty {
+	margin-left: 0px;
+	margin-top: 0px;
+	display: inline;
+	float: left;
+	height: 81px;
+	margin-bottom: 0;
+	width: 112px;
+}
+#vegempty {
+	margin-left: 0px;
+	margin-top: 0px;
+	display: inline;
+	float: left;
+	height: 93px;
+	margin-bottom: 0;
+	width: 112px;
+}
+#colwrap2 {
+	float: left;
+	margin-left: 0px;
+	margin-top: 0px;
+	width: 122px;
+}
+#graindairyempty {
+	margin-left: 0px;
+	margin-top: 0px;
+	display: inline;
+	float: left;
+	height: 93px;
+	margin-bottom: 0;
+	width: 122px;
+}
+#proteinempty {
+	margin-left: 0px;
+	margin-top: 0px;
+	display: inline;
+	float: left;
+	height: 81px;
+	margin-bottom: 0;
+	width: 122px;
+}
+#text {
+	margin-left: 0px;
+	margin-top: 0px;
+	display: inline;
+	float: left;
+	height: 40px;
+	margin-bottom: 0;
+	width: 234px;
+}
+#iconList li {
+	list-style-image:none;
+	display:inline;
+}
+#content {
+	margin-left:10%;
+	margin-right:10%;
+}
+#foodPlateWrapper, #stats {
+	width: 235px;
+	margin: auto auto;
+}
+#welcomeHeader {
+	margin: auto auto;
+}
+
