@@ -4,8 +4,20 @@
 <meta charset="utf-8">
 <title>Create an Element then check for the existence of a property or method</title>
 
+<script type="text/javascript">
+	function checkCanvas() {
+		var canvasSupport = !!document.createElement('canvas').getContext;
+		alert(canvasSupport);
+		if(canvasSupport) {
+			alert("your browser is the bomb and loves canvas stuffs")
+		} else {
+			alert("dude, its 2012 get a new flippin' browser already!")
+		}
+	}
+</script>
+
 </head>
 
-<body>
+<body onload="checkCanvas()">
 </body>
 </html>
