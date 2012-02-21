@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <title>Lesson 2: Media Elements</title>
 <script type="text/javascript">
-function checkVideoSupport()
-{
-
+function checkVideoSupport() {
+  var hasVideo = !!document.createElement('video').canPlayType;
+  alert(hasVideo);
 }
 </script>
 </head>
