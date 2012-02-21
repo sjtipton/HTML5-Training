@@ -3,9 +3,17 @@
 <head>
 <meta charset="utf-8">
 <title>Checking for the existence of a global property</title>
-
+<script type="text/javascript">
+	function checkGeoLocation() {
+		if(navigator.geolocation) {
+			alert("Your browser is off the chain and supports geolocation");
+		} else {
+			alert("Your browser sucks and does not support geolocation");
+		}
+	}
+</script>
 </head>
 
-<body>
+<body onload="checkGeoLocation()">
 </body>
 </html>
