@@ -14,6 +14,16 @@
 			$("#demo").get(0).pause();
 		});
 	});
+
+	function changeVol(vol) {
+		var demo = document.getElementById('demo');
+		demo.volume = vol;
+		if(demo.volume == 0) {
+			demo.muted = true;
+		} else {
+			demo.muted = false;
+		}
+	}
 </script>
 
 </head>
@@ -32,7 +42,7 @@
 	<input type="button" id="pause_btn" name="pause_btn" value="pause" />
 </p>
 <p>Volume:
-	<input type="range" id="volumeControl" name="volumeControl" min="0" max="1" step=".1" value=".5" />
+	<input type="range" id="volumeControl" name="volumeControl" min="0" max="1" step=".1" value=".5" onchange="changeVol(this.value)" />
 </p>
 <p>Seekbar:
 	<input type="range" id="seekbar" name="seekbar" step="any" value="1" />
