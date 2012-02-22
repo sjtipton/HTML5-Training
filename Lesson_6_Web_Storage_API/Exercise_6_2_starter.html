@@ -16,7 +16,16 @@ function checkStorageSupport()
 	}
 }
 
-
+function saveLocal() {
+	if(window.localStorage) {
+		var firstname = document.getElementById('firstName').value;
+		var title = document.getElementById('title').value;
+		var person = {"firstname":firstname, "title":title};
+		localStorage.setItem("person", JSON.stringify(person));
+	} else {
+		alert("This browser does NOT support local storage");	
+	}
+}
 </script>
 </head>
 <body onLoad="checkStorageSupport()">
@@ -27,7 +36,7 @@ function checkStorageSupport()
   <input type="text" name="title" id="title">
 </p>
 <div id="main">
-    <input id="saveBtn" type="button" value="Save Values" />
+    <input id="saveBtn" type="button" value="Save Values" onclick="saveLocal()" />
     <input id="readBtn" type="button" value="Read Values" />
 </div>	
 </body>
