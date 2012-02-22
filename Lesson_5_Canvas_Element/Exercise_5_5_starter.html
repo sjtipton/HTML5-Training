@@ -7,8 +7,16 @@
 	<style>
 		canvas { border: 1px solid black; }
 	</style>
+	<script type="text/javascript">
+		function drawArc() {
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext('2d');
+			context.arc(75, 75, 35, 0, Math.PI, false);
+			context.stroke();
+		}
+	</script>
 </head>
-<body>
-
+<body onload="drawArc()">
+<canvas id="myCanvas"></canvas>
 </body>
 </html>
