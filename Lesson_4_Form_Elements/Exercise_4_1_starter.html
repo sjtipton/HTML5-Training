@@ -13,6 +13,12 @@
 
 <script src="scripts/jquery_1_6_1.js"></script>
 
+<script type="text/javascript">
+	function showActivityLevel(newVal) {
+		document.getElementById('activityDisplay').innerHTML = "Level: " + newVal;
+	}
+</script>
+
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -51,29 +57,31 @@
       		      </p>
         		    <p>
         		      <label for="userPhone">Phone: </label>
-        		      <input type="text" name="userPhone" id="userPhone">
+        		      <input type="tel" name="userPhone" id="userPhone">
         		    </p>
         		    <p>
         		      <label for="userWebsite">Website:</label>
-        		      <input type="text" name="userWebsite" id="userWebsite">
+        		      <input type="url" name="userWebsite" id="userWebsite">
         		    </p>
         		    <p>
         		      <label for="userEmail">Email:</label>
-        		      <input type="text" name="userEmail" id="userEmail">
+        		      <input type="email" name="userEmail" id="userEmail">
         		    </p>
                       <p>
                         <label for="activityLevel">Activity Level: </label>
-                        <input type="text"><span id="activityDisplay"></span>
+                        <input type="range" max="10" min="0" step="0.5" value="0" onchange="showActivityLevel(this.value)"><span id="activityDisplay"></span>
                      </p>
                       <p>Age: 
                         <label for="age"></label>
-                        <input name="age" id="age">
+                        <input name="age" id="age" type="number" min="18" max="100" step="1" value="18">
                       </p>
                    
                     	<p>
                		 	  <label for="joinDate">Date you would like to join:</label>
-                        	<input id="joinDate">
-                      	</p>                 
+                        	<input id="joinDate" type="datetime-local">
+                      	</p>       
+                      <label for="color">Change the default color of your food plate.</label>
+                      <input type="color" name="color" id="color">
         		  </form>
         		  <p>
       		    </p>
