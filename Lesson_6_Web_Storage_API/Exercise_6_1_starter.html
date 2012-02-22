@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8">
 <title>HTML5: Web Storage API</title>
-
+<script type="text/javascript">
+	function checkStorageSupport() {
+		if(window.localStorage) {
+			alert("this browser supports local storage");
+		} else {
+			alert("this browser does NOT support local storage");
+		}
+	}
+</script>
 </head>
 <body onLoad="checkStorageSupport()">
 <p>First Name: 
