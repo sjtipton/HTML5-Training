@@ -3,13 +3,26 @@
 <head>
 <meta charset="utf-8" />
 <title>HTML5 Canvas Element - Exercise 2</title>
-
+<style type="text/css">
+	#myCanvas {
+		border: dashed 1px black;
+	}
+</style>
+<script type="text/javascript">
+	function resizeCanvas() {
+		var myCanvas = document.getElementById('myCanvas');
+		myCanvas.width = 400;
+		myCanvas.height = 400;
+	}
+</script>
 </head>
 
 <body>
 <h1>The HTML5 Canvas Element</h1>
 
-
+<canvas id="myCanvas" width="200" height="200">
+	Your browser does not support canvas.
+</canvas>
 
 <p>&nbsp;</p>
 <input type="button" id="resizeCanvas" value="Resize Canvas" onclick="resizeCanvas()" />
