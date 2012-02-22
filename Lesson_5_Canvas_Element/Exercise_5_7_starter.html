@@ -4,11 +4,21 @@
 	<meta charset="utf-8">
 	<title>The HTML5 Canvas: Bezier Curve</title>
 	<!-- bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) -->
+	<script type="text/javascript">
+		function drawBezierCurve() {
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext('2d');
+			context.beginPath();
+			context.moveTo(25, 75);
+			context.bezierCurveTo(75, 37, 70, 25, 50, 25);
+			context.stroke();
+		}
+	</script>
 	<style>
 		canvas { border: 1px solid black; }
 	</style>
 </head>
-<body>
+<body onload="drawBezierCurve()">
 <canvas id="myCanvas"></canvas>
 </body>
 </html>
