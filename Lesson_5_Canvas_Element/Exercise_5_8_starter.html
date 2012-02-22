@@ -3,11 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <title>HTML5 Canvas Element - Exercise 1</title>
-
+<script type="text/javascript">
+	function draw() {
+		var canvas = document.getElementById('myCanvas');
+		var context = canvas.getContext('2d');
+		var grad = context.createLinearGradient(0, 0, 175, 50);
+		grad.addColorStop(0, "#ff0000");
+		grad.addColorStop(1, "#00ff00");
+		context.fillStyle=grad;
+		context.fillRect(0, 0, 175, 50);
+	}
+</script>
 </head>
-<body>
+<body onload="draw()">
 
-
+<canvas id="myCanvas" width="600" height="100" style="border:1px solid #c3c3c3">
+	
+</canvas>
 
 </body>
 </html>
