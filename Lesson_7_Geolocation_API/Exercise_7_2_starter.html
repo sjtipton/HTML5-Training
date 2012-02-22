@@ -8,7 +8,19 @@
         if(navigator.geolocation) 
 		{
             document.getElementById("status").innerHTML = "HTML5 Geolocation is supported in your browser.";
+            navigator.geolocation.getCurrentPosition(updateLocation);
         }
+    }
+
+    function updateLocation(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      if(!!latitude || !!longitude) {
+        document.getElementById('status').innerHTML = "HTML5 geolocation is supported, but location currently not available.";
+        return;
+      }
+      document.getElementById("latitude").innerHTML = latitude;
+      document.getElementById("longitude").innerHTML = longitude;
     }
 </script>
 </head>
