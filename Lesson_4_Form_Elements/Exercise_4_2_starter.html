@@ -50,7 +50,7 @@ function showActivityLevel(newVal)
         		  <form action="" method="post" name="join_form" id="join_form">
         		
         		      <label for="userName">User Name</label>
-        		      <input type="text" name="userName" id="userName" placeholder="No spacebars are allowed." autofocus>
+        		      <input type="text" name="userName" id="userName" placeholder="No spacebars are allowed.">
       		
         		      <label for="userPhone">Phone: </label>
         		      <input type="tel" name="userPhone" id="userPhone">
@@ -62,7 +62,7 @@ function showActivityLevel(newVal)
         		      <input type="email" name="userEmail" id="userEmail">
         		  
             			<label for="userZip">Zip Code:</label>
-            			<input type="text" name="userZip" id="userZip">
+            			<input type="text" name="userZip" id="userZip" pattern="[0-9]{5}">
           		
                         <label for="activityLevel">Activity Level: </label>
                         <input type="range" max="10" min="0" step=".5" value="0" onChange="showActivityLevel(this.value)"><span id="activityDisplay"></span>
@@ -75,6 +75,17 @@ function showActivityLevel(newVal)
         		   
                		 	  <label for="joinDate">Date you would like to join:</label>
                         	<input id="joinDate" type="date">
+                        	<p>I would also be interested in tracking the following:</p>
+                        	<input type="text" id="categoryList" list="categories">
+                        	<p>
+                        		<datalist id="categories">
+                        			<option value="Vitamins"></option>
+                        			<option value="Minerals"></option>
+                        			<option value="Cholesterol"></option>
+                        			<option value="Lipids"></option>
+                        			<option value="Fiber"></option>
+                        		</datalist>
+                        	</p>
                                           
         		  </form>
         		
