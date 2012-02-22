@@ -12,6 +12,27 @@
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 <link href="css/styles.css" rel="stylesheet">
+<script type="text/javascript">
+  var regForm = document.getElementById('join_form');
+  window.addEventListener('load', startValidating, false);
+
+  function startValidating() {
+    //register an event listener for "invalid" events
+    document.join_form.addEventListener('invalid', invalidHandler, true);
+  }
+
+  function invalidHandler(event) {
+    var valState = event.srcElement.validity;
+    if(valState.valueMissing) {
+      alert("You must complete the entire form. You did not complate the " + event.target.name);
+    }
+    if(valState.typeMismatch) {
+      alert("You must enter a valid value for " + event.target.name);
+    }
+    event.preventDefault();
+    
+  }
+</script>
 </head>
 <!-- #wrapper -->
 
@@ -45,13 +66,13 @@
           <p>
             <label for="userName">User Name</label>
             <input type="text" name="User Name" id="userName" 
-            	   placeholder="No spacebars are allowed." autofocus>
+            	   placeholder="No spacebars are allowed." autofocus required>
           </p>
          
           
           <p>
             <label for="userEmail">Email:</label>
-            <input type="email" name="User Email" id="userEmail" >
+            <input type="email" name="User Email" id="userEmail" required>
           </p>
           
           <p>
