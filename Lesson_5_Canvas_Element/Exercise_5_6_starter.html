@@ -3,12 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<title>The HTML5 Canvas: Quadratic Curve</title>
-	
+	<script type="text/javascript">
+		function drawQuadCurve() {
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext('2d');
+			//quadraticCurveTo(cp1x, cp1y, x, y)
+			context.beginPath();
+			context.moveTo(25, 75);
+			context.quadraticCurveTo(135, 0, 275, 75);
+			context.stroke();
+		}
+	</script>
 	<style>
 		canvas { border: 1px solid black; }
 	</style>
 </head>
-<body>
-	
+<body onload="drawQuadCurve()">
+	<canvas id="myCanvas"></canvas>
 </body>
 </html>
