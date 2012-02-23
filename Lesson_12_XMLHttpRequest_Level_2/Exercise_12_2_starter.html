@@ -9,9 +9,11 @@
 <div id="tipOfTheDay">
 	<p id="tipText"> </p>
 </div>
-<progress id="xhrProgress">
+<progress id="xhrProgress"></progress>
 <script>
 	var xhr;
+	var	tipText;
+	var	tip;
 
 	xhr = new XMLHttpRequest()
 	if(typeof xhr.withCredentials === undefined) {
@@ -21,6 +23,13 @@
 		document.getElementById('tipText').innerHTML = "Your Browser does  support Cross-Origin XMLHttpRequest";
 	}
 	
+	xhr.onprogress = function (evt) {
+		alert("loaded " + evt.loaded + " of " + evt.total);
+	}
+	
+	var	xhrlocation = "http://www.kevinruse.com/KRA-HTML_FoodPlate/messages.xml";
+	xhr.open("GET", xhrlocation, true);
+	xhr.send(null);
 </script>
 </body>
 </html>
