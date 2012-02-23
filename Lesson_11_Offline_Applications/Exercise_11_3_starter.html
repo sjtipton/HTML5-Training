@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html manifest="offline.manifest">
 <head>
 <meta charset="utf-8">
 <title>Offline Applications</title>
@@ -11,6 +11,13 @@ else {
 	alert("This browser does NOT support Application Cache");
 }
 	
+	function checkStatus () {
+		if(navigator.onLine) {
+			alert("yes you are online");
+		} else {
+			alert("no you are not online");
+		}
+	}
 
 </script>
 </head>

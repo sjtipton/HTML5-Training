@@ -1,0 +1,22 @@
+CACHE MANIFEST
+
+#files to be cached
+
+CACHE
+index.html
+styles/foodPlate.css
+scripts/index.js
+scripts/register.js
+scripts/jquery_1_6_1.js
+html/register.html
+html/addFood.html
+images/favicon.png
+Exercise_11_4_finished.html
+
+#do NOT cache
+
+NETWORK
+scripts/bogusScript.cgi
+
+FALLBACK
+Exercise_11_4_finished.html Fallback.html
