@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>postMessage API</title>
+
 </head>
 
 <body>
@@ -17,8 +18,17 @@
     <input type="submit" value="Get Food Tip"/>
   </p>
   <h2>Target iframe (www.kevinruse.com):</h2>
-  <!-- creat iFrame here --> 
+  <iframe src="http://www.kevinruse.com/KRA-HTML_FoodPlate/tips.html" frameborder="0" id="iframe"></iframe>
 
 </form>
-
+<script type="text/javascript">
+	var win = document.getElementById('iframe').contentWindow;
+	addEventListener('submit', function(evt) {
+		win.postMessage(document.getElementById('message').value, "http://www.kevinruse.com");
+		if(evt.preventDefault) {
+			evt.preventDefault();
+			evt.returnValue = false;
+		}
+	});
+</script>
 </html>
