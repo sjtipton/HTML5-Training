@@ -8,6 +8,32 @@
 	<div id="tipOfTheDay">
 		<p id="tipText"> </p>
 	</div>
+	<script type="text/javascript">
+		var	xhr;
+		var tipText;
+		var tip;
+		var xmlTips;
 
+		function loadTip () {
+			try {
+				xhr = new XMLHttpRequest();
+				xhr.open("GET", "http://www.kevinruse.com/KRA-HTML_FoodPlate/messages.xml", false);
+				xhr.send(null);
+				tipText = document.getElementById("tipText");
+				xmlTips = xhr.responseXML;
+				output();
+			}
+			catch(err) {
+				alert("Try failed. Error occurred: " + err);
+			}
+
+			function output () {
+				var randomNumber = Math.floor(Math.random() * 11);
+				tip = xmlTips.getElementsByTagName("message")[randomNumber].childNodes[0].nodeValue;
+				tipText.textContent = tip;
+			}
+		}
+		window.addEventListener('load', loadTip, true);
+	</script>
 </body>
 </html>
