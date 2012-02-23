@@ -42,7 +42,33 @@
     </tbody>
   </table>
 </form>
+<script type="text/javascript">
+  var calcBMI_btn;
+  var units;
+  var height;
+  var weight;
+  var worker;
 
+  $(document).ready(function() {
+    if(typeof(Worker) != "undefined") {
+      worker = new Worker("scripts/bmi.js");
+      worker.addEventListener('message', messageHandler, true);
+    } else {
+      alert("your browser DOES NOT support web workers");
+    }
+
+    $("#calcBMI_btn").click(function() {
+      units = $("[name=units]:radio:checked").val();
+      height = $("#h").val();
+      weight = $("#w").val();
+      worker.postMessage({"units": units, "height": height, "weight": weight});
+    });
+  });
+
+  function messageHandler (evt) {
+    $("#bmi").val(evt.data);
+  }
+</script>
 <h1>BMI</h1>
 <p>BMI is a measure of weight proportionate to height. Generally, BMI is considered an effective way to evaluate whether a person is overweight or obese, though there are exceptions to the rule. Some muscular people may have a BMI that puts them in the overweight range. However, these people are not considered overweight because muscle tissue weighs more than fat tissue.<sup>1<sup></p> 
 <p><sup>1</sup><small>http://stanfordhospital.org/clinicsmedServices/COE/surgicalServices/generalSurgery/bariatricsurgery/resources/bmi_calculator.html</small></p>
