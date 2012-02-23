@@ -24,9 +24,16 @@
             <td id="longitude">?</td>
           </tr>
 </table>
-
+<input type="button" id="getAccuracy" value="Get Accuracy" onclick="getAccuracy()">
+<input type="button" id="getTimeStamp" value="Get Time" onclick="getTimeStamp()">
+<input type="button" id="getAltitude" value="Get Altitude" onclick="getAltitude()">
+<input type="button" id="getAltitudeAccuracy" value="Get Altitude Accuracy" onclick="getAltitudeAccuracy()">
 <script type="text/javascript">
-	
+	var accuracy;
+  var timestamp;
+  var altitude;
+  var altitudeAccuracy;
+
     function loadGeoData() 
 	{
         if(navigator.geolocation) 
@@ -47,8 +54,27 @@
 
         document.getElementById("latitude").innerHTML = latitude;
         document.getElementById("longitude").innerHTML = longitude;
+        accuracy = position.coords.accuracy;
+        timestamp = position.timestamp;
+        altitude = position.altitude;
+        altitudeAccuracy = position.altitudeAccuracy;
     }
-	
+
+    function getTimeStamp() {
+      alert("Time position was acquired in milliseconds: " + timestamp);
+    }
+
+    function getAccuracy() {
+      alert("Position was acquired with an accuracy of: " + accuracy + " meters.");
+    }
+
+    function getAltitude() {
+      alert("Position altitude is: " + altitude + " meters.");
+    }
+
+    function getAltitudeAccuracy() {
+      alert("Position altitude accuracy is: " + altitudeAccuracy);
+    }
   </script>
 </body>
 </html>
