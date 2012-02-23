@@ -4,11 +4,31 @@
 <meta charset="utf-8">
 <title>Check for Drag and Drop Support</title>
 <script src="Optional_Exercise_10_1/scripts/jquery_1_6_1.js"></script>
+<script type="text/javascript">
+  function init () {
+    var fruitImg = document.getElementById('fruitIcon');
+    var fruitPlate = document.getElementById('fruitempty');
+    //fruitImg.addEventListener("dragstart", dragEventHandler, false);
+    //fruitImg.addEventListener("drag", watchMeDrag, false);
+    //fruitImg.addEventListener("dragend", watchMeDrag, false);
+    //fruitPlate.addEventListener("dragenter", watchMeDrag, false);
+    //fruitPlate.addEventListener("dragleave", watchMeDrag, false);
+    //fruitPlate.addEventListener("dragover", watchMeDrag, false);
+  }
 
+  function dragEventHandler (evt) {
+    $("#status").text("You started dragging the " + evt.target.id);
+  }
+
+  var dragTracker = 1;
+  function watchMeDrag (evt) {
+    $("#status").text("I'm dragging this many times: " + dragTracker++);
+  }
+</script>
 <link rel="stylesheet" href="Optional_Exercise_10_1/styles/foodPlate.css">
 </head>
 
-<body>
+<body onload="init()">
 <div id="foodPlateWrapper">
   <div id="colwrap1"> 
   	<img src="Optional_Exercise_10_1/images/myPlate/fruitempty.png" id="fruitempty" />
