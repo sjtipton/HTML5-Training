@@ -3,6 +3,24 @@
 <head>
 <meta charset="utf-8">
 <title>Responding to the Drop Event</title>
+<script type="text/javascript">
+	function init () {
+		var fruitPlate = document.getElementById('foodPlate');
+		fruitPlate.addEventListener('drop', dropHandler, false);
+		fruitPlate.addEventListener('dragover', dragOverHandler, false);
+	}
+
+	function dragOverHandler (evt) {
+		if(evt.preventDefault) {
+			evt.preventDefault();
+			return false;
+		}
+	}
+
+	function dropHandler (evt) {
+		alert("you dropped me on the plate during a " + evt.type + " event.");
+	}
+</script>
 </head>
 <body onLoad="init()">
 <p>
