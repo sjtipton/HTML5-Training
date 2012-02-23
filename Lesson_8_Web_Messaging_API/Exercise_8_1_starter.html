@@ -3,10 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>postMessage API</title>
-
+<script type="text/javascript">
+	function checkPostMessage() {
+		if(typeof window.postMessage != 'undefined') {
+			alert("postMessage API is supported in the browser");
+		}
+	}
+</script>
 </head>
 
-<body>
+<body onload="checkPostMessage()">
 <section id="wrapper">
 <header>
   <h1>postMessage API for (Cross Document Messaging)</h1>
