@@ -7,10 +7,31 @@
 
 <body>
 <h2>Time Console:</h2>
+<div id="output"></div>
+
 <button type="button" onclick="closeConnection()">Close Connection</button>
 <button type="button" onclick="reOpen()">Reopen Connection</button>
 <button type="button" onclick="getElementById('output').innerHTML = ''">Clear Log</button>
 
+<script type="text/javascript">
+	var evtSource = new EventSource("http://localhost:8888/scripts/time.php");
+	var output = document.getElementById("output");
+	evtSource.addEventListener("message", onMsg, false);
 
+	function onMsg (evt) {
+		output.innerHTML += evt.data + "<br>";
+	}
+
+	function closeConnection () {
+		evtSource.close();
+		output.innerHTML += "The connection was closed. <br>";
+	}
+
+	function reOpen () {
+		evtSource = new EventSource("http://localhost:8888/scripts/time.php");
+		output.innerHTML += "The connection was reopened. <br>";
+		evtSource.addEventListener("message", onMsg, false);
+	}
+</script>
 </body>
 </html>
